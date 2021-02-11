@@ -24,8 +24,16 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get('/api/timestamp/2015-12-25', (req, res) => {
-  res.json({date: 'yo what up'});
+const dateMiddleware = (req, res, next) => {
+  const { date } = req.params;
+  date = new Date().toString();
+  next();
+};
+
+app.get('/api/timestamp/:date', dateMiddleware, (req, res) => {
+  res.send({
+    date: req.date
+  });
 })
 
 // listen for requests :)
