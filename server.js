@@ -24,8 +24,8 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get('/api/timestamp', (req, res) => {
-  res.json({date: '2015'});
+app.get('/api/timestamp/2015-12-25', (req, res) => {
+  res.json({date: 'yo what up'});
 })
 
 // listen for requests :)
